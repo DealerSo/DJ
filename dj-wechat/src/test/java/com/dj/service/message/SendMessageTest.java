@@ -15,11 +15,11 @@ public class SendMessageTest {
 
     @Test
     public void testSendMessage(){
-        String content = "你好，沈进，到洛阳了吗？猜猜我是谁？估计你猜不出来，哈哈！！！！！！";
+        String content = "测试一下";
 
 
         TextMessage message = new TextMessage();
-        message.setTouser("ShenJin");
+        message.setTouser("dsafdafdsafdssafdsaf");
         message.setMsgtype("text");
         message.setAgentid(WechatParamsUtil.CONTACT_AGENTID);
 
