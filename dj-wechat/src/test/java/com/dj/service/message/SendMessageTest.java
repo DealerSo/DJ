@@ -3,10 +3,11 @@ package com.dj.service.message;
 import com.dj.wechat.bean.message.Text;
 import com.dj.wechat.bean.message.TextcardMessage;
 import com.dj.wechat.bean.resp.AccessTokenResp;
+import com.dj.wechat.common.constant.Constant;
 import com.dj.wechat.bean.message.TextMessage;
 import com.dj.wechat.bean.message.Textcard;
-import com.dj.wechat.common.Constant;
 import com.dj.wechat.service.message.SendMessageService;
+import com.dj.wechat.service.message.impl.SendMessageServiceImpl;
 import com.dj.wechat.util.WechatParamsUtil;
 import com.dj.wechat.util.WechatUtil;
 import org.junit.Test;
@@ -38,7 +39,7 @@ public class SendMessageTest {
         if(Constant.SUCCESS_CODE == accessToken.getErrcode()){
             token = accessToken.getAccessToken();
 
-            SendMessageService sendMessageService = new SendMessageService();
+            SendMessageService sendMessageService = new SendMessageServiceImpl();
             sendMessageService.sendMessage(token,message);
 
         }else{
@@ -78,7 +79,7 @@ public class SendMessageTest {
         if(Constant.SUCCESS_CODE == accessToken.getErrcode()){
             token = accessToken.getAccessToken();
 
-            SendMessageService sendMessageService = new SendMessageService();
+            SendMessageService sendMessageService = new SendMessageServiceImpl();
             sendMessageService.sendMessage(token,message);
 
         }else{
@@ -90,6 +91,6 @@ public class SendMessageTest {
      * 发送图文消息
      */
     
-    
+
 
 }

@@ -22,7 +22,7 @@ public class AESUtil {
     private static final String KEY = "ukMwa6kGt@3AB&sQdR";
 
     public static void main(String[] args) throws Exception {
-        String source = "username=123&password=aaa&code=abc";
+        String source = "{'touser': 'GuWei','templateNo':'100001','templateParams':'zhangsan|&|20'}";
         System.out.println("Excepted:" + source);
 
         String result = enCrypt(source);
