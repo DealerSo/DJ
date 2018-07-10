@@ -19,19 +19,16 @@ public class AESUtil {
 
     private static Logger logger = LoggerFactory.getLogger(AESUtil.class);
 
-    private static final String KEY = "ukMwa3kGt@3AB&sQdR";
+    private static final String KEY = "ukMwa6kGt@3AB&sQdR";
 
     public static void main(String[] args) throws Exception {
-        String source = "pwd=pwd";
+        String source = "username=123&password=aaa&code=abc";
         System.out.println("Excepted:" + source);
 
         String result = enCrypt(source);
         System.out.println("加密后:" + result);
         String source_2 = deCrypt(result);
         System.out.println("Actual:" + source_2);
-
-        String isSuccess = source.equals(source_2) ? "Success" : "fail";
-        System.out.println("Result:" + isSuccess);
     }
 
 

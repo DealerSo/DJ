@@ -1,10 +1,11 @@
 package com.dj.wechat.util;
 
-import com.dj.wechat.bean.AccessToken;
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.dj.wechat.bean.resp.AccessTokenResp;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
@@ -98,8 +99,8 @@ public class WechatUtil {
      * @param corpsecret
      * @return
      */
-    public static AccessToken getAccessToken(String corpId,String corpsecret){
-        AccessToken accessToken = null;
+    public static AccessTokenResp getAccessToken(String corpId,String corpsecret){
+        AccessTokenResp accessTokenResp = null;
         // 替换参数
         String requestUrl = WechatApiUrlUtil.ACCESS_TOKEN_URL.replace("{corpid}",corpId).replace("{corpsecret}",corpsecret);
         /**
@@ -114,23 +115,23 @@ public class WechatUtil {
         JSONObject jsonObject = httpRequest(requestUrl,"GET",null);
         if(jsonObject != null){
             try{
-                accessToken = new AccessToken();
-                accessToken.setErrcode(jsonObject.getInt("errcode"));
-                accessToken.setErrmgs(jsonObject.getString("errmsg"));
-                accessToken.setAccessToken(jsonObject.getString("access_token"));
-                accessToken.setExpiresIn(jsonObject.getInt("expires_in")); //单位：秒
+            	accessTokenResp = new AccessTokenResp();
+            	accessTokenResp.setErrcode(jsonObject.getInt("errcode"));
+            	accessTokenResp.setErrmsg(jsonObject.getString("errmsg"));
+            	accessTokenResp.setAccessToken(jsonObject.getString("access_token"));
+            	accessTokenResp.setExpiresIn(jsonObject.getInt("expires_in")); //单位：秒
             }catch(JSONException e){
                 logger.error("获取access token失败 errcode:{} errmsg:{}" + jsonObject.getInt("errcode") + ":" + jsonObject.getString("errmsg"));
             }
         }
-        return accessToken;
+        return accessTokenResp;
     }
 
 
     public static void main(String[] args){
         String corpId = "ww8f4383114f03cce5";
         String corpsecret = "nR7p8-rG5eTZVXsBv5nwRYI-Zu0cipSFoU2eICc16iE";
-        AccessToken accessToken = getAccessToken(corpId,corpsecret);
+        AccessTokenResp accessToken = getAccessToken(corpId,corpsecret);
         System.out.println(accessToken.getErrcode());
         System.out.println(accessToken.getAccessToken());
         System.out.println(accessToken.getExpiresIn());

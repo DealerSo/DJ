@@ -1,4 +1,4 @@
-package com.dj.wechat.bean.base;
+package com.dj.wechat.bean.message.base;
 
 import java.io.Serializable;
 

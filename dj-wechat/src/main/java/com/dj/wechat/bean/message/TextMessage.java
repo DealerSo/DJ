@@ -1,6 +1,6 @@
 package com.dj.wechat.bean.message;
 
-import com.dj.wechat.bean.base.BaseMessage;
+import com.dj.wechat.bean.message.base.BaseMessage;
 
 public class TextMessage extends BaseMessage {
     private static final long serialVersionUID = 2798008713310564529L;
